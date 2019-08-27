@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;mybatis-context.xml&apos; to &apos;mybatis&apos;&#x0D;&#x0A;- Original project: &apos;sts01&apos;&#x0D;&#x0A;- Destination element: &apos;mybatis&apos;&#x0D;&#x0A;- Original element: &apos;mybatis-context.xml&apos;" description="Copy file" element1="src/main/webapp/WEB-INF/mybatis/mybatis-context.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1566781884688" target="/ms_prj-master/src/main/resources/mybatis" units="0" version="1.0"/>
+</session>

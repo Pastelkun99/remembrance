@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="insertmapper">
+	<insert id = "WORD_INSERT" parameterType="map" >
+		INSERT INTO QUIZCARD(Q_FRONT,Q_BACK) VALUES (#{q_front}, #{q_back})
+	</insert>
+</mapper>	
+
+<mapper namespace="randommapper">
+	<insert id = "WORD_RANDOM" parameterType="map" >
+		SELECT * FROM (SELECT * FROM QUIZCARD ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <= 2
+	</insert>
+</mapper>	
+	 
