@@ -5,7 +5,7 @@
 <mapper namespace="userMapper">
 
 	<insert id="insertUserOne" parameterType="com.project.dao.User">
-		INSERT INTO USER_TBL(USER_ID, USER_PW, USER_MOTTO) VALUES (#{user_id}, #{user_pw}, #{user_motto})
+		INSERT INTO USER_TBL(USER_ID, USER_PW, USER_MOTTO, USER_NAME, USER_AGE, USER_GRADE, USER_SIGN_DATE) VALUES (#{user_id}, #{user_pw}, #{user_motto}, #{user_name}, #{user_age}, '1', SYSDATE)
 	</insert>
 	
 	<select id="selectUserLogin" parameterType="com.project.dao.User" resultType="com.project.dao.User">

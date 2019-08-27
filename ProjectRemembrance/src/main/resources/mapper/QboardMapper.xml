@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+					"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="QboardMapper">
 	<insert id="insertBoardOne" parameterType="map">
@@ -25,7 +26,7 @@
 	<select id="selectBoardOne" parameterType="int" resultMap="result1">
 		SELECT 
 			Q_NO, Q_TITLE, 
-			Q_CONTENT, Q_WRITER
+			Q_CONTENT, Q_WRITER,
 			Q_HIT, TO_CHAR(Q_DATE, 'YYYY-MM-DD') Q_DATE 
 		FROM QNA_TBL WHERE Q_NO=#{no}
 	</select>

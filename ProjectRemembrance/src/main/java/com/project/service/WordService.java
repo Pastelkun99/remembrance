@@ -2,6 +2,9 @@ package com.project.service;
 
 import java.util.List;
 
+import com.project.dao.Word;
+
 public interface WordService {
 	
+	public List<Word> selectWordList();
 }

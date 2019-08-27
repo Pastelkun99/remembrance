@@ -1,0 +1,18 @@
+package com.project.dao;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.project.service.WordService;
+
+@Service
+public class WordServiceDAO implements WordService {
+
+	@Override
+	public List<Word> selectWordList() {
+		
+		return null;
+	}
+
+}

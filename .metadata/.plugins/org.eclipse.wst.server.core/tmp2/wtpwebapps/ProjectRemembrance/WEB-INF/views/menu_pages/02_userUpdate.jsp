@@ -8,10 +8,8 @@
 		<div class="col-md-5">
 			<div class="card">
 				<div class="card-header">사용자 정보수정</div>
-				<form action="user/userUpdate.do" method="post">
+				<form action="${pageContext.request.contextPath }/userUpdate.do" method="post">
 					<div class="card-body">
-
-
 						<div class="form-group row">
 							<label for="email_address"
 								class="col-md-4 col-form-label text-md-right">사용자 이름</label>
@@ -64,8 +62,7 @@
 							<button type="button" class="btn btn-primary"
 								onclick="location.href='../main.do'">취소</button>
 							<br /> <br />
-							<button type="button" class="btn btn-danger"
-								onclick="location.href='userDelete.do'">사용자 제거</button>
+							<button type="button" class="btn btn-danger" onclick="#userdeleteModal">사용자 제거</button>
 						</div>
 					</div>
 				</form>

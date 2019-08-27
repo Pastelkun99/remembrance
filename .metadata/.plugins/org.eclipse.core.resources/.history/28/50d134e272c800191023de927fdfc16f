@@ -1,0 +1,10 @@
+package com.project.dao;
+
+import org.springframework.stereotype.Service;
+
+import com.project.service.WordService;
+
+@Service
+public class WordServiceDAO implements WordService {
+
+}

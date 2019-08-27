@@ -20,7 +20,6 @@ import com.project.service.QnABoardService;
 @Controller
 public class QnABoardController {
 
-	
 	@Autowired
 	private QnABoardService qDAO;
 	

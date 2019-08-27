@@ -48,17 +48,17 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/user/userDelete.do", method = RequestMethod.GET)
-	public String userDelete(HttpSession httpSession, Model model) {
+	public String userDelete(HttpSession httpSession, Model model, HttpServletRequest request) {
 		if(httpSession.getAttribute("login_check") != null) {
 			System.out.println("userdelete 세션 체크 : " + httpSession.getAttribute("login_check"));
 			us.deleteUserOne((String)httpSession.getAttribute("login_check"));
 			model.addAttribute("msg", "회원 정보가 삭제되었습니다.");
-			model.addAttribute("href", "/main.do");
+			model.addAttribute("href", request.getContextPath() + "/main.do");
 			httpSession.invalidate();
 			return "alert";
 		} else {
 			model.addAttribute("msg", "먼저 로그인해주십시오.");
-			model.addAttribute("href", "/main.do");
+			model.addAttribute("href", request.getContextPath() + "/main.do");
 			return "alert";
 		}
 	}

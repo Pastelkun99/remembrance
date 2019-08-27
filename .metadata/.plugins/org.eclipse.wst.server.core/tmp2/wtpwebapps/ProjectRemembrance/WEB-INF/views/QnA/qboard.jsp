@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -23,7 +24,7 @@
 		<c:forEach var="map" items="${list}">
 		<tr>
 			<td>${map.Q_NO}</td>
-			<td><a href="qboardc.do?no=${map.Q_NO}">${map.Q_TITLE}</a></td>
+			<td><a href="main.do?menu=${param.menu}&no=${map.Q_NO}">${map.Q_TITLE}</a></td>
 			<td>${map.Q_WRITER}</td>
 			<td>${map.Q_HIT}</td>
 			<td>${map.Q_DATE}</td>	

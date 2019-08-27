@@ -1,47 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
 	<h3>게시판 내용</h3>
-	<table border="1">
+
+	<ul class="list-group">
+		<li class="list-group-item">글 번호 : ${board.Q_NO }</li>
+		<li class="list-group-item">제목 : ${board.Q_TITLE }</li>
+		<li class="list-group-item">내용 : ${board.Q_CONTENT }</li>
+		<li class="list-group-item">작성자 : ${board.Q_WRITER }</li>
+		<li class="list-group-item">조회수 : ${board.Q_HIT }</li>
+	</ul>
+
+	<%-- <table border="1">
 		<tr>
 			<th>글번호</th>
-			<td>${map.Q_NO}</td>
+			<td>${board.Q_NO}</td>
 		</tr>
-		<tr>	
+		<tr>
 			<th>제목</th>
-			<td>${map.Q_TITLE}</td>
-		</tr>		
-		<tr>	
+			<td>${board.Q_TITLE}</td>
+		</tr>
+		<tr>
 			<th>내용</th>
-			<td>${map.Q_CONTENT}</td>
+			<td>${board.Q_CONTENT}</td>
 		</tr>
-		<tr>	
+		<tr>
 			<th>작성자</th>
-			<td>${map.Q_WRITER}</td>
+			<td>${board.Q_WRITER}</td>
 		</tr>
-		<tr>	
+		<tr>
 			<th>조회수</th>
-			<td>${map.Q_HIT}</td>
+			<td>${board.Q_HIT}</td>
 		</tr>
-		<tr>	
+		<tr>
 			<th>날짜</th>
-			<td>${map.Q_DATE}</td>
-		</tr>	
-	</table>
-	<a href="qboard.do">글목록</a>
-	<c:if test="${prev != 0 }">
+			<td>${board.Q_DATE}</td>
+		</tr>
+	</table> --%>
+	<p></p>
+	<button type="button" class="btn btn-primary" onclick="location.href='main.do?menu=3'">목록으로</button>
+	<%-- <c:if test="${prev != 0 }">
 		<a href="qboardc.do?no=${prev}">이전글</a>
 	</c:if>
 	<c:if test="${next != 0 }">
 		<a href="qboardc.do?no=${next}">다음글</a>
 	</c:if>
-	<a href="qboarde.do?no=${map.Q_NO}">글수정</a>
+	<a href="qboarde.do?no=${map.Q_NO}">글수정</a> --%>
 </body>
 </html>

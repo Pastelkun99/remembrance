@@ -4,7 +4,33 @@
 <%@ page session="true" pageEncoding="UTF-8"%>
 
 
-	<h3>게시판 목록</h3>
+<table class="table table-striped">
+<h2>QnA Board</h2>
+</br>
+	<thead>
+		<tr>
+			<th scope="col">번호</th>
+			<th scope="col">작성자</th>
+			<th scope="col">제목</th>
+			<th scope="col">조회수</th>
+			<th scope="col">날짜</th>
+		</tr>
+	</thead>
+	<tbody>
+	<c:forEach var="board" items="${list }">
+		<tr>
+			<th scope="row">${board.Q_NO }</th>
+			<td>${board.Q_WRITER }</td>
+			<td><a href="main.do?menu=${param.menu }&no=${board.Q_NO}">${board.Q_TITLE}</a></td>
+			<td>${board.Q_HIT }</td>
+			<td>${board.Q_DATE }</td>
+		</tr>
+	</c:forEach>
+	
+	</tbody>
+</table>
+	<button type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/main.do?menu=3'">새로운 질문 올리기</button>
+<%-- <h3>게시판 목록</h3>
 	<table border="1">
 		<tr>
 			<th>번호</th>
@@ -25,6 +51,5 @@
 		</c:forEach>
 	</table>
 	
-	<a href="qboardw.do">게시판 글쓰기</a>
-	
-	
+	<a href="qboardw.do">게시판 글쓰기</a> --%>
+

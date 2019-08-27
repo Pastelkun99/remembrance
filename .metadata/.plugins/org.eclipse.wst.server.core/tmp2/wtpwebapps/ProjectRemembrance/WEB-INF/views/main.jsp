@@ -38,19 +38,19 @@
 		<form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Search for..."
+				<!-- <input type="text" class="form-control" placeholder="Search for..."
 					aria-label="Search" aria-describedby="basic-addon2">
 				<div class="input-group-append">
 					<button class="btn btn-primary" type="button">
 						<i class="fas fa-search"></i>
 					</button>
-				</div>
+				</div> -->
 			</div>
 		</form>
 
 		<!-- Navbar -->
 		<ul class="navbar-nav ml-auto ml-md-0">
-			<li class="nav-item dropdown no-arrow mx-1"><a
+			<!-- <li class="nav-item dropdown no-arrow mx-1"><a
 				class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <span
@@ -62,8 +62,8 @@
 						class="dropdown-item" href="#">Another action</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">Something else here</a>
-				</div></li>
-			<li class="nav-item dropdown no-arrow mx-1"><a
+				</div></li> -->
+			<!-- <li class="nav-item dropdown no-arrow mx-1"><a
 				class="nav-link dropdown-toggle" href="#" id="messagesDropdown"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"> <i class="fas fa-envelope fa-fw"></i> <span
@@ -75,7 +75,7 @@
 						class="dropdown-item" href="#">Another action</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">Something else here</a>
-				</div></li>
+				</div></li> -->
 
 			<li class="nav-item dropdown no-arrow"><a
 				class="nav-link dropdown-toggle" href="#" id="userDropdown"
@@ -84,18 +84,26 @@
 			</a>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="#">활동 내역</a> <a
-						class="dropdown-item"
-						href="${pageContext.request.contextPath}/main.do?menu=2">나의 계정
-						수정</a>
-					<div class="dropdown-divider"></div>
 					<c:if test="${sessionScope.login_check eq null }">
 						<a class="dropdown-item"
-							href="${pageContext.request.contextPath}/login.do">로그인</a>
+							href="${pageContext.request.contextPath}/main.do?menu=5">로그인</a>
+						<a class="dropdown-item"
+							href="${pageContext.request.contextPath}/main.do?menu=4">회원가입</a>
 					</c:if>
 					<c:if test="${sessionScope.login_check ne null }">
-						<%String myid = (String)session.getAttribute("login_check");%>
-						<a class="dropdown-item" > <FONT COLOR= "#FF0000"> <strong>  [<%=myid%>]님 로그인 </strong> </FONT> </a>
+						<div class="dropdown-divider"></div>
+						<%
+							String myid = (String) session.getAttribute("login_check");
+						%>
+						<a class="dropdown-item"> <FONT COLOR="#FF0000"> <strong>
+									[<%=myid%>]님 로그인
+							</strong>
+						</FONT>
+						</a>
+						<a class="dropdown-item" href="#">활동 내역</a>
+						<a class="dropdown-item"
+							href="${pageContext.request.contextPath}/main.do?menu=2">나의
+							계정 수정</a>
 						<a class="dropdown-item" href="#" data-toggle="modal"
 							data-target="#logoutModal">로그아웃</a>
 					</c:if>
@@ -118,14 +126,20 @@
 				aria-haspopup="true" aria-expanded="false"> <i
 					class="fas fa-fw fa-table"></i> <span>Word Start</span></a>
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-					<h6 class="dropdown-header">학습:</h6>
-					<a class="dropdown-item"
-						href="${pageContext.request.contextPath}/main.do?menu=1">학습 시작</a>
-					<a class="dropdown-item"
-						href="${pageContext.request.contextPath}/word/wordcard.do">단어장
-						관리(x)</a>
-					<div class="dropdown-divider"></div>
-					<h6 class="dropdown-header">Other Pages:</h6>
+					<h6 class="dropdown-header">학습</h6>
+					<c:if test="${sessionScope.login_check ne null}">
+						<a class="dropdown-item"
+							href="${pageContext.request.contextPath}/main.do?menu=1">학습
+							시작</a>
+						<a class="dropdown-item"
+							href="${pageContext.request.contextPath}/word/wordcard.do">단어장
+							관리(x)</a>
+						<div class="dropdown-divider"></div>
+						<h6 class="dropdown-header">Other Pages:</h6>
+					</c:if>
+					<c:if test="${sessionScope.login_check eq null }">
+					
+					</c:if>
 					<%-- <a class="dropdown-item" href="${pageContext.request.contextPath}/main.do?menu=3">QnA</a> --%>
 				</div></li>
 
@@ -146,7 +160,7 @@
 					<jsp:include page="menu_pages/00_home.jsp"></jsp:include>
 				</c:if>
 
-				<!-- <메뉴: 1번> 게임 시작 버튼 (word.jsp 홈 내부) -->
+				<!-- <메뉴: 1번> 학습 시작 버튼 (word.jsp 홈 내부) -->
 				<c:if test="${param.menu == 1}">
 					<jsp:include page="menu_pages/01_word.jsp"></jsp:include>
 				</c:if>
@@ -158,9 +172,21 @@
 
 				<!-- <메뉴: 3번> QnA 게시판 (qboard.jsp 홈 내부) -->
 				<c:if test="${param.menu == 3}">
-					<jsp:include page="menu_pages/03_qboard.jsp"></jsp:include>
+					<c:if test="${param.no eq null }">
+						<jsp:include page="menu_pages/03_qboard.jsp"></jsp:include>
+					</c:if>
+					<c:if test="${param.no ne null }">
+						<jsp:include page="QnA/qboardc.jsp"></jsp:include>
+					</c:if>
+				</c:if>
+				
+				<c:if test="${param.menu == 4}">
+					<jsp:include page="menu_pages/04_register.jsp"></jsp:include>
 				</c:if>
 
+				<c:if test="${param.menu == 5}">
+					<jsp:include page="menu_pages/05_login.jsp"></jsp:include>
+				</c:if>
 
 
 
@@ -197,6 +223,30 @@
 				<div class="modal-footer">
 					<a class="btn btn-primary"
 						href="${pageContext.request.contextPath}/logout.do">로그아웃</a>
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal">취소</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="userdeleteModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">회원 삭제</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">사용자 정보를 삭제하면, 단어장 데이터와 같은 모든 개인 데이터가 삭제돼요!
+										이 작업은 돌이킬 수 없으니 주의하세요!
+										정말 사용자 정보를 삭제하시겠어요?</div>
+				<div class="modal-footer">
+					<a class="btn btn-danger"
+						href="${pageContext.request.contextPath}/user/userDelete.do">사용자 삭제</a>
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">취소</button>
 				</div>
