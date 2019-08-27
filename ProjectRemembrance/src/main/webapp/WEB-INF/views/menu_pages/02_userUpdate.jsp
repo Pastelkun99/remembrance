@@ -8,7 +8,8 @@
 		<div class="col-md-5">
 			<div class="card">
 				<div class="card-header">사용자 정보수정</div>
-				<form action="${pageContext.request.contextPath }/userUpdate.do" method="post">
+				<form action="${pageContext.request.contextPath }/user/userUpdate.do"
+					method="post">
 					<div class="card-body">
 						<div class="form-group row">
 							<label for="email_address"
@@ -18,13 +19,31 @@
 									name="user_id" readonly="readonly" value="${user.user_id }">
 							</div>
 						</div>
+						
+						<div class="form-group row">
+							<label for="motto" class="col-md-4 col-form-label text-md-right">수정할 이름
+								</label>
+							<div class="col-md-6">
+								<input type="text" id="user_name" class="form-control"
+									name="user_name" value="${user.user_name }" required>
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label for="motto" class="col-md-4 col-form-label text-md-right">수정할 나이
+								</label>
+							<div class="col-md-6">
+								<input type="text" id="user_age" class="form-control"
+									name="user_age" value="${user.user_age }" required>
+							</div>
+						</div>
 
 						<div class="form-group row">
 							<label for="password"
 								class="col-md-4 col-form-label text-md-right">이전 비밀번호</label>
 							<div class="col-md-6">
 								<input type="password" id="user_pw_before" class="form-control"
-									name="user_pw_before" oninput="return pwChangeCheck()" required>
+									name="user_pw_before" oninput="return chkOldPw()">
 								<div id="pwchecktext"
 									style="text-align: center; margin-left: 0px; margin-bottom: 0px;"></div>
 							</div>
@@ -35,7 +54,7 @@
 								class="col-md-4 col-form-label text-md-right">새 비밀번호</label>
 							<div class="col-md-6">
 								<input type="password" id="user_pw" class="form-control"
-									name="user_pw" required>
+									name="user_pw" oninput="return checkNewPw()" required>
 							</div>
 						</div>
 
@@ -44,7 +63,7 @@
 								class="col-md-4 col-form-label text-md-right">새 비밀번호 확인</label>
 							<div class="col-md-6">
 								<input type="password" id="user_pw_confirm" class="form-control"
-									name="user_pw_confirm" required>
+									name="user_pw_confirm" oninput="return checkNewPw()" required>
 							</div>
 						</div>
 
@@ -58,11 +77,12 @@
 						</div>
 
 						<div class="col-md-6 offset-md-4">
-							<button type="submit" id="updatebtn" class="btn btn-primary">정보수정</button>
+							<button type="submit" id="updatebtn" class="btn btn-primary" onclick="location:href='${pageContext.request.contextPath}/main.do'">정보수정</button>
 							<button type="button" class="btn btn-primary"
-								onclick="location.href='../main.do'">취소</button>
+								onclick="location:href='${pageContext.request.contextPath}/main.do'">취소</button>
 							<br /> <br />
-							<button type="button" class="btn btn-danger" onclick="#userdeleteModal">사용자 제거</button>
+							<button type="button" class="btn btn-danger" data-toggle="modal"
+								data-target="#userdeleteModal">사용자 제거</button>
 						</div>
 					</div>
 				</form>
@@ -71,3 +91,40 @@
 	</div>
 </div>
 </main>
+
+<script>
+	function chkOldPw() {
+		var inputed = $('#user_pw_before').val();
+		console.log(inputed);
+
+		$.ajax({
+			type : 'post',
+			data : {
+				user_pw_before : inputed
+			},
+			// 레스트 컨트롤러 이름 적시
+			url : "/controller/checkPw.do",
+			success : function(data) {
+				if (data == 1) {
+					// 가능한경우
+					$('#updatebtn').prop("disabled", false);
+				} else {
+					$('#updatebtn').prop("disabled", true);
+				}
+			}
+		});
+	}
+	
+	function checkNewPw() {
+		var pwInputed = $('#user_pw').val();
+		var check = $('#user_pw_confirm').val();
+
+		if (check == "") {
+			$('#updatebtn').prop("disabled", true);
+		} else if (pwInputed == check) {
+			$('#updatebtn').prop("disabled", false);
+		} else if (pwInputed != check) {
+			$('#updatebtn').prop("disabled", true);
+		}
+	}
+</script>

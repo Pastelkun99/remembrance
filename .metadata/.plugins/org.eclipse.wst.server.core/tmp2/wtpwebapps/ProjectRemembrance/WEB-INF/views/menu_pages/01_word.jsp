@@ -9,14 +9,14 @@
 		<p>
 			<button class="btn btn-primary" type="button" data-toggle="collapse"
 				data-target="#collapseExample" aria-expanded="false"
-				aria-controls="collapseExample">Show & Hide Answer</button>
+				aria-controls="collapseExample" id="showanswer">Show & Hide Answer</button>
 			
 		</p>
 		<div class="collapse" id="collapseExample">
 			<div class="card card-body" id="back">Quiz Back</div>
 			</br>
-			<button class="btn btn-danger" type="button">틀렸음</button>
-			<button class="btn btn-success" type="button">맞혔음</button>
+			<button class="btn btn-danger" type="button" onclick="btn_x();">틀렸음</button>
+			<button class="btn btn-success" type="button" onclick="btn_o();">맞혔음</button>
 		</div>
 	</div>
 </div>

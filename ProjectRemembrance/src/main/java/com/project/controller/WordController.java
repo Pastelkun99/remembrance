@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.project.dao.WordServiceDAO;
 
 @Controller
-@RequestMapping("/word")
 public class WordController {
 	
 	@Autowired
@@ -17,7 +16,6 @@ public class WordController {
 	
 	@RequestMapping(value = "/wordstart.do", method = RequestMethod.GET)
 	public String ajaxEx(Model model) {
-		model.addAttribute("list", wDAO.selectWordList());
 		return "";
 	}
 	

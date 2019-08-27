@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.dao.QnABoardDAO;
 import com.project.dao.User;
+import com.project.dao.Word;
 import com.project.dao.WordServiceDAO;
 import com.project.service.UserServiceimplement;
 
@@ -38,11 +39,21 @@ public class HomeController {
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String main(Model model, HttpSession httpSession,
 			@RequestParam(value = "menu", required = false, defaultValue = "0") int menu,
-			@RequestParam(value = "no", required = false, defaultValue = "0") int no) {
-		if (menu == 1) {
-			model.addAttribute("list", wDAO.selectWordList());
-			System.out.println(wDAO.selectWordList().toString());
+			@RequestParam(value = "no", required = false, defaultValue = "0") int no,
+			@RequestParam(value = "level", required = false, defaultValue = "") String level) {
+		
+		if (menu == 0) {
+			List<User> list = us.selectUserList();
+			System.out.println(list.toString());
+			model.addAttribute("userlist", list);
 			
+		} else if (menu == 1) { // word card
+			System.out.println(level);
+			Word temp = new Word();
+			httpSession.setAttribute("card_name", level);
+			temp.setLevel(level);
+			model.addAttribute("list", wDAO.selectWordList(level));
+			System.out.println(wDAO.selectWordList(level).toString());
 		} else if (menu == 2) {
 			if(httpSession.getAttribute("login_check") != null) {
 				User thing = us.selectUserAll((String)httpSession.getAttribute("login_check")); 
@@ -72,7 +83,10 @@ public class HomeController {
 				model.addAttribute("prev", prev);
 				model.addAttribute("next", next);
 			}
+		} else if(menu == 6) {
+			//model.addAttribute("list", wDAO.selectWordList(level));
 		}
+		
 		return "main";
 	}
 
@@ -105,13 +119,13 @@ public class HomeController {
 				return "alert";
 			} else {
 				model.addAttribute("msg", "로그인에 실패했습니다. 아이디와 비밀번호를 확인해주세요.");
-				model.addAttribute("href", request.getContextPath() + "/main.do&menu=5");
+				model.addAttribute("href", request.getContextPath() + "/main.do?menu=5");
 				return "alert";
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			model.addAttribute("msg", "로그인에 실패했습니다. 아이디와 비밀번호를 확인해주세요.");
-			model.addAttribute("href", request.getContextPath() + "/main.do&menu=5");
+			model.addAttribute("href", request.getContextPath() + "/main.do?menu=5");
 			return "alert";
 		}
 	}
@@ -142,6 +156,23 @@ public class HomeController {
 			result = 1;
 		}
 		return result;
+	}
+	
+	// 회원 등록 페이지 관리 시 상호작용 목적
+	@RequestMapping(value = "/checkPw.do", method = RequestMethod.POST)
+	public @ResponseBody int check_pw(@RequestParam("user_pw_before") String pw, HttpSession httpSession) {
+		int result = 0;
+		try {
+			String userpw = us.selectUserPw(pw).getUser_pw();
+			if(userpw != "") {
+				result = 1;
+				return result;
+			} else {
+				return 0;
+			}
+		} catch (Exception e) {
+			return 0;
+		}
 	}
 
 	// 로그아웃 처리

@@ -1,5 +1,7 @@
 package com.project.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
@@ -44,6 +46,21 @@ public class UserServiceimplement implements UserService{
 	@Override
 	public int deleteUserOne(String id) {
 		return sqlSession.delete("userMapper.deleteUserOne", id);
+	}
+
+	@Override
+	public int userHitUpdate(String id) {
+		return sqlSession.update("userMapper.userHitUpdate", id);
+	}
+
+	@Override
+	public List<User> selectUserList() {
+		return sqlSession.selectList("userMapper.selectUserList");
+	}
+
+	@Override
+	public User selectUserPw(String value) {
+		return sqlSession.selectOne("userMapper.selectUserPw", value);
 	}
 
 

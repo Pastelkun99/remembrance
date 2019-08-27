@@ -32,6 +32,7 @@ public class UserController {
 		}
 	}
 	
+	// userupdate 이리로 온다.
 	@RequestMapping(value = "/user/userUpdate.do", method = RequestMethod.POST)
 	public String userUpdatenow(@ModelAttribute User user, HttpSession httpSession, Model model, HttpServletRequest request) {
 		if(httpSession.getAttribute("login_check") != null) {

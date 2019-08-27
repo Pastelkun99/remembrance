@@ -1,13 +1,23 @@
 package com.project.dao;
 
 public class Word {
-
+	
+	private String level;
 	private String q_id;
 	private int q_no;
 	private String q_front;
 	private String q_back;
 	private int q_hit;
 	
+	
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
 	public String getQ_id() {
 		return q_id;
 	}

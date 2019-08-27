@@ -1,6 +1,7 @@
 package com.project.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -17,10 +18,16 @@ public class WordServiceDAO implements WordService {
 	@Resource(name="sqlSession")
 	private SqlSession sqlSession;
 	
-	
 	@Override
-	public List<Word> selectWordList() {
-		return sqlSession.selectList("wordMapper.selectWordList");
+	public List<Word> selectWordList(String value) {
+		System.out.println("서비스 객체에서 받은 level : " + value);
+		return sqlSession.selectList("wordMapper.selectWordList", value);
+	}
+
+
+	@Override
+	public int createWordList(Map<String, String> map) {
+		return sqlSession.update("wordMapper.createWordList", map);
 	}
 
 }

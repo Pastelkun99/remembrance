@@ -2,8 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page session="true" pageEncoding="UTF-8"%>
-
-
 <html>
 <head>
 <%-- <jsp:include page="bootstrap.jsp"></jsp:include> --%>
@@ -16,8 +14,25 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/sb-admin.css"
 	rel="stylesheet" />
-
-
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+    <style>
+      p {
+        font-family: "Nanum Gothic", sans-serif;
+        font-size: 15px;
+      }
+      p.a {
+        font-weight: 400;
+      }
+      p.b {
+        font-weight: 700;
+      }
+      p.c {
+        font-weight: 800;
+      }
+      p.d {
+        font-weight: bold;
+      }
+    </style>
 <title>Remembrance Project</title>
 </head>
 
@@ -126,19 +141,16 @@
 				aria-haspopup="true" aria-expanded="false"> <i
 					class="fas fa-fw fa-table"></i> <span>Word Start</span></a>
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-					<h6 class="dropdown-header">학습</h6>
 					<c:if test="${sessionScope.login_check ne null}">
-						<a class="dropdown-item"
+						<%-- <a class="dropdown-item"
 							href="${pageContext.request.contextPath}/main.do?menu=1">학습
-							시작</a>
+							시작</a> --%>
 						<a class="dropdown-item"
-							href="${pageContext.request.contextPath}/word/wordcard.do">단어장
-							관리(x)</a>
-						<div class="dropdown-divider"></div>
-						<h6 class="dropdown-header">Other Pages:</h6>
+							href="${pageContext.request.contextPath}/main.do?menu=11">단어장
+							관리</a>
 					</c:if>
 					<c:if test="${sessionScope.login_check eq null }">
-					
+						<a class="dropdown-item">로그인이 필요해요!</a>
 					</c:if>
 					<%-- <a class="dropdown-item" href="${pageContext.request.contextPath}/main.do?menu=3">QnA</a> --%>
 				</div></li>
@@ -155,22 +167,18 @@
 
 			<div class="container-fluid">
 
-				<!-- <메뉴: 0번> 메인 (main.jsp 홈) -->
 				<c:if test="${param.menu == 0 || param.menu == null}">
 					<jsp:include page="menu_pages/00_home.jsp"></jsp:include>
 				</c:if>
 
-				<!-- <메뉴: 1번> 학습 시작 버튼 (word.jsp 홈 내부) -->
 				<c:if test="${param.menu == 1}">
 					<jsp:include page="menu_pages/01_word.jsp"></jsp:include>
 				</c:if>
 
-				<!-- <메뉴: 2번>"나의 계정 수정" 버튼 (userUpdate.jsp 홈 내부) -->
 				<c:if test="${param.menu == 2}">
 					<jsp:include page="menu_pages/02_userUpdate.jsp"></jsp:include>
 				</c:if>
 
-				<!-- <메뉴: 3번> QnA 게시판 (qboard.jsp 홈 내부) -->
 				<c:if test="${param.menu == 3}">
 					<c:if test="${param.no eq null }">
 						<jsp:include page="menu_pages/03_qboard.jsp"></jsp:include>
@@ -187,9 +195,26 @@
 				<c:if test="${param.menu == 5}">
 					<jsp:include page="menu_pages/05_login.jsp"></jsp:include>
 				</c:if>
-
-
-
+				
+				<c:if test="${param.menu == 6 }">
+					<jsp:include page="menu_pages/06_basic.jsp"></jsp:include>
+				</c:if>
+				
+				<c:if test="${param.menu == 7 }">
+					<jsp:include page="menu_pages/07_medium.jsp"></jsp:include>
+				</c:if>
+				
+				<c:if test="${param.menu == 9 }">
+					<jsp:include page="menu_pages/09_wordcard.jsp"></jsp:include>
+				</c:if>
+				
+				<c:if test="${param.menu == 10 }">
+					<jsp:include page="menu_pages/10_custom.jsp"></jsp:include>
+				</c:if>
+				
+				<c:if test="${param.menu == 11 }">
+					<jsp:include page="menu_pages/11_makeWordCard.jsp"></jsp:include>
+				</c:if>
 
 			</div>
 			<!-- /.container-fluid -->

@@ -16,59 +16,61 @@
 <!-- Icon Cards-->
 <div class="row">
 	<div class="col-xl-3 col-sm-6 mb-3">
-		<div class="card text-white bg-primary o-hidden h-100">
+		<div class="card text-white bg-success o-hidden h-100">
 			<div class="card-body">
 				<div class="card-body-icon">
-					<i class="fas fa-fw fa-comments"></i>
+					<i class="fas fa-fw fa-shopping-cart"></i>
 				</div>
-				<div class="mr-5">26 New Messages!</div>
+				<div class="mr-5">Basic Level</div>
 			</div>
-			<a class="card-footer text-white clearfix small z-1" href="#"> <span
+			<a class="card-footer text-white clearfix small z-1" href="${pageContext.request.contextPath }/main.do?menu=6"> <span
 				class="float-left">View Details</span> <span class="float-right">
 					<i class="fas fa-angle-right"></i>
 			</span>
 			</a>
 		</div>
 	</div>
+	
 	<div class="col-xl-3 col-sm-6 mb-3">
 		<div class="card text-white bg-warning o-hidden h-100">
 			<div class="card-body">
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-list"></i>
 				</div>
-				<div class="mr-5">11 New Tasks!</div>
+				<div class="mr-5">Medium Level</div>
 			</div>
-			<a class="card-footer text-white clearfix small z-1" href="#"> <span
+			<a class="card-footer text-white clearfix small z-1" href="${pageContext.request.contextPath }/main.do?menu=7"> <span
 				class="float-left">View Details</span> <span class="float-right">
 					<i class="fas fa-angle-right"></i>
 			</span>
 			</a>
 		</div>
 	</div>
-	<div class="col-xl-3 col-sm-6 mb-3">
-		<div class="card text-white bg-success o-hidden h-100">
-			<div class="card-body">
-				<div class="card-body-icon">
-					<i class="fas fa-fw fa-shopping-cart"></i>
-				</div>
-				<div class="mr-5">123 New Orders!</div>
-			</div>
-			<a class="card-footer text-white clearfix small z-1" href="#"> <span
-				class="float-left">View Details</span> <span class="float-right">
-					<i class="fas fa-angle-right"></i>
-			</span>
-			</a>
-		</div>
-	</div>
+	
 	<div class="col-xl-3 col-sm-6 mb-3">
 		<div class="card text-white bg-danger o-hidden h-100">
 			<div class="card-body">
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-life-ring"></i>
 				</div>
-				<div class="mr-5">13 New Tickets!</div>
+				<div class="mr-5">Expert Level</div>
 			</div>
-			<a class="card-footer text-white clearfix small z-1" href="#"> <span
+			<a class="card-footer text-white clearfix small z-1" href="${pageContext.request.contextPath }/main.do?menu=8"> <span
+				class="float-left">View Details</span> <span class="float-right">
+					<i class="fas fa-angle-right"></i>
+			</span>
+			</a>
+		</div>
+	</div>
+	<div class="col-xl-3 col-sm-6 mb-3">
+		<div class="card text-white bg-primary o-hidden h-100">
+			<div class="card-body">
+				<div class="card-body-icon">
+					<i class="fas fa-fw fa-comments"></i>
+				</div>
+				<div class="mr-5">Custom Level</div>
+			</div>
+			<a class="card-footer text-white clearfix small z-1" href="${pageContext.request.contextPath }/main.do?menu=9"> <span
 				class="float-left">View Details</span> <span class="float-right">
 					<i class="fas fa-angle-right"></i>
 			</span>
@@ -105,6 +107,7 @@
 				cellspacing="0">
 				<thead>
 					<tr>
+						<th>학습횟수</th>
 						<th>아이디</th>
 						<th>이름</th>
 						<th>나이</th>
@@ -115,38 +118,22 @@
 				</thead>
 
 				<tbody>
+					<c:forEach var="list" items="${userlist }">
 					<tr>
-						<td>YOON MO</td>
-						<td>구윤모</td>
-						<td>27</td>
-						<td>A</td>
-						<td>2019/08/26</td>
-						<td>1</td>
+						<td>${list.user_hit }</td>
+						<td>${list.user_id }</td>
+						<td>${list.user_name }</td>
+						<td>${list.user_age }</td>
+						<td>${list.user_grade }</td>
+						<td>${list.user_sign_date }</td>
+						<td>${list.user_motto }</td>
 					</tr>
-
-					<tr>
-						<td>YONG HYEON</td>
-						<td>박용현</td>
-						<td>28</td>
-						<td>A</td>
-						<td>2019/08/26</td>
-						<td>2</td>
-					</tr>
-
-					<tr>
-						<td>HANSOL</td>
-						<td>이한솔</td>
-						<td>32</td>
-						<td>A</td>
-						<td>2019/08/26</td>
-						<td>3</td>
-					</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 	</div>
 	<div class="card-footer small text-muted">
-		Updated at
-		<%= today %>
+		Updated at <%= today %>
 	</div>
 </div>
