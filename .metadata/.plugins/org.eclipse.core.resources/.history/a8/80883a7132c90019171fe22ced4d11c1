@@ -1,0 +1,46 @@
+package com.project.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.project.dao.WordServiceDAO;
+
+@Controller
+@RequestMapping("/word")
+public class WordController {
+	
+	@Autowired
+	private WordServiceDAO wDAO;
+	
+	@RequestMapping(value = "/wordstart.do", method = RequestMethod.GET)
+	public String ajaxEx(Model model) {
+		return "";
+	}
+	
+	@RequestMapping(value = "/wordcardCreate.do", method = RequestMethod.POST)
+	public String wordcardCreate(HttpServletRequest request, @RequestParam("q_name") String value) {
+		System.out.println("받아온 q_name : " + value);
+		Map<String , String> sql = new HashMap<String, String>();
+		String sqlvalue = "CREATE TABLE " + value +
+							"(Q_NO NUMBER PRIMARY KEY, " + 
+							"Q_ID VARCHAR2(20), " + 
+							"Q_FRONT VARCHAR2(200) " + 
+							"Q_BACK VARCHAR2(200) " + 
+							"Q_HIT NUMBER)";
+		sql.put("sql", sqlvalue);
+		wDAO.createWordList(sql);
+		return request.getContextPath() + "main.do?menu=11";
+	}
+	
+	
+	
+}

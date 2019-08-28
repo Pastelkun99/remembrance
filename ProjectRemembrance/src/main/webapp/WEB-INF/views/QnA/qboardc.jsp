@@ -1,57 +1,87 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+
 <body>
 	<h3>게시판 내용</h3>
+	<main class="login-form">
+	<div class="cotainer">
+		<div class="row justify-content-center">
+			<div class="col-md-5">
+				<div class="card">
+					<div class="card-header">게시판 내용</div>
+					<form action="${pageContext.request.contextPath}/qb/qboardw.do"
+						method="post">
+						<div class="card-body">
 
-	<ul class="list-group">
-		<li class="list-group-item">글 번호 : ${board.Q_NO }</li>
-		<li class="list-group-item">제목 : ${board.Q_TITLE }</li>
-		<li class="list-group-item">내용 : ${board.Q_CONTENT }</li>
-		<li class="list-group-item">작성자 : ${board.Q_WRITER }</li>
-		<li class="list-group-item">조회수 : ${board.Q_HIT }</li>
-	</ul>
+							<div class="form-group row">
+								<label for="email_address"
+									class="col-md-4 col-form-label text-md-right">글번호</label>
+								<div class="col-md-6" style="padding-bottom: 0px">
+									<input type="text" id="user_id" class="form-control"
+										name="user_id" readonly="readonly" value="${board.Q_NO }">
+								</div>
+							</div>
 
-	<%-- <table border="1">
-		<tr>
-			<th>글번호</th>
-			<td>${board.Q_NO}</td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td>${board.Q_TITLE}</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td>${board.Q_CONTENT}</td>
-		</tr>
-		<tr>
-			<th>작성자</th>
-			<td>${board.Q_WRITER}</td>
-		</tr>
-		<tr>
-			<th>조회수</th>
-			<td>${board.Q_HIT}</td>
-		</tr>
-		<tr>
-			<th>날짜</th>
-			<td>${board.Q_DATE}</td>
-		</tr>
-	</table> --%>
-	<p></p>
-	<button type="button" class="btn btn-primary" onclick="location.href='main.do?menu=3'">목록으로</button>
-	<%-- <c:if test="${prev != 0 }">
-		<a href="qboardc.do?no=${prev}">이전글</a>
-	</c:if>
-	<c:if test="${next != 0 }">
-		<a href="qboardc.do?no=${next}">다음글</a>
-	</c:if>
-	<a href="qboarde.do?no=${map.Q_NO}">글수정</a> --%>
+							<div class="form-group row">
+								<label for="email_address"
+									class="col-md-4 col-form-label text-md-right">제목</label>
+								<div class="col-md-6" style="padding-bottom: 0px">
+									<input type="text" id="user_id" class="form-control"
+										name="user_id" readonly="readonly" value="${board.Q_TITLE }">
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label for="email_address"
+									class="col-md-4 col-form-label text-md-right">내용</label>
+								<div class="col-md-6" style="padding-bottom: 0px">
+									<input type="text" id="user_id" class="form-control"
+										name="user_id" readonly="readonly" value="${board.Q_CONTENT }">
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label for="email_address"
+									class="col-md-4 col-form-label text-md-right">작성자</label>
+								<div class="col-md-6" style="padding-bottom: 0px">
+									<input type="text" id="user_id" class="form-control"
+										name="user_id" readonly="readonly" value="${board.Q_WRITER }">
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label for="email_address"
+									class="col-md-4 col-form-label text-md-right">조회수</label>
+								<div class="col-md-6" style="padding-bottom: 0px">
+									<input type="text" id="user_id" class="form-control"
+										name="user_id" readonly="readonly" value="${board.Q_HIT }">
+								</div>
+							</div>
+
+							<div class="col-md-6 offset-md-4">
+								<p></p>
+								<c:if test="${prev != 0 }">
+									<button type="button" class="btn btn-primary btn-sm"
+										onclick="location.href='main.do?menu=3&no=${prev}'">이전글</button>
+								</c:if>
+								<button type="button" class="btn btn-primary btn-sm"
+									onclick="location.href='main.do?menu=3'">목록으로</button>
+								<c:if test="${next != 0 }">
+									<button type="button" class="btn btn-primary btn-sm"
+										onclick="location.href='main.do?menu=3&no=${next}'">다음글</button>
+								</c:if>
+
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</main>
 </body>
 </html>

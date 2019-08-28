@@ -93,6 +93,10 @@
 </main>
 
 <script>
+
+	var chkop = 0;
+	var chknp = 0;
+
 	function chkOldPw() {
 		var inputed = $('#user_pw_before').val();
 		console.log(inputed);
@@ -108,8 +112,10 @@
 				if (data == 1) {
 					// 가능한경우
 					$('#updatebtn').prop("disabled", false);
+					chkop = 1;
 				} else {
 					$('#updatebtn').prop("disabled", true);
+					chkop = 0;
 				}
 			}
 		});
@@ -121,10 +127,15 @@
 
 		if (check == "") {
 			$('#updatebtn').prop("disabled", true);
+			chknp = 0;
 		} else if (pwInputed == check) {
-			$('#updatebtn').prop("disabled", false);
+			chknp = 1;
+			if(chkop == 1 && chknp == 1) {
+				$('#updatebtn').prop("disabled", false);
+			}
 		} else if (pwInputed != check) {
 			$('#updatebtn').prop("disabled", true);
+			chknp = 0
 		}
 	}
 </script>

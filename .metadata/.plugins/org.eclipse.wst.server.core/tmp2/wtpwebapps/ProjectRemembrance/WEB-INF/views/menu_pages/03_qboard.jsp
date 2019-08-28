@@ -4,52 +4,47 @@
 <%@ page session="true" pageEncoding="UTF-8"%>
 
 
-<table class="table table-striped">
-<h2>QnA Board</h2>
-</br>
-	<thead>
-		<tr>
-			<th scope="col">번호</th>
-			<th scope="col">작성자</th>
-			<th scope="col">제목</th>
-			<th scope="col">조회수</th>
-			<th scope="col">날짜</th>
-		</tr>
-	</thead>
-	<tbody>
-	<c:forEach var="board" items="${list }">
-		<tr>
-			<th scope="row">${board.Q_NO }</th>
-			<td>${board.Q_WRITER }</td>
-			<td><a href="main.do?menu=${param.menu }&no=${board.Q_NO}">${board.Q_TITLE}</a></td>
-			<td>${board.Q_HIT }</td>
-			<td>${board.Q_DATE }</td>
-		</tr>
-	</c:forEach>
-	
-	</tbody>
-</table>
-	<button type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/main.do?menu=3'">새로운 질문 올리기</button>
-<%-- <h3>게시판 목록</h3>
-	<table border="1">
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>조회수</th>
-			<th>날짜</th>	
-		</tr>
-		
-		<c:forEach var="map" items="${list}">
-		<tr>
-			<td>${map.Q_NO}</td>
-			<td><a href="qboardc.do?no=${map.Q_NO}">${map.Q_TITLE}</a></td>
-			<td>${map.Q_WRITER}</td>
-			<td>${map.Q_HIT}</td>
-			<td>${map.Q_DATE}</td>	
-		</tr>
-		</c:forEach>
-	</table>
-	
-	<a href="qboardw.do">게시판 글쓰기</a> --%>
+<!-- 시스템 날씨 데이터 불러오기 -->
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-table"></i> QnA 게시판 
+    <span style="float:right"> <button type="button" class="btn btn-primary btn-sm" 
+    onclick="location.href='${pageContext.request.contextPath}/main.do?menu=12'" 
+    class="right" > 새로운 질문 올리기</button> </span>
+    
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table table-striped" id="dataTable" >
+        <thead>
+          <tr>
+            <th scope="col">작성자</th>
+            <th scope="col">제목</th>
+            <th scope="col">조회수</th>
+            <th scope="col">날짜</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <c:forEach var="board" items="${list }">
+          <tr>
+            <td>${board.Q_WRITER }</td>
+            <td><a href="main.do?menu=${param.menu }&no=${board.Q_NO}">${board.Q_TITLE}</a></td>
+            <td>${board.Q_HIT }</td>
+            <td>${board.Q_DATE }</td>
+          </tr>
+          </c:forEach>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">
+    <%Date now = new Date();
+       SimpleDateFormat sf = new SimpleDateFormat("yy년 MM월 dd일 E a hh:mm:ss"); 
+       String today = sf.format(now);%>
+    <%= today %>
+  </div>
+</div>

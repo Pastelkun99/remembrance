@@ -14,25 +14,31 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/sb-admin.css"
 	rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
-    <style>
-      p {
-        font-family: "Nanum Gothic", sans-serif;
-        font-size: 15px;
-      }
-      p.a {
-        font-weight: 400;
-      }
-      p.b {
-        font-weight: 700;
-      }
-      p.c {
-        font-weight: 800;
-      }
-      p.d {
-        font-weight: bold;
-      }
-    </style>
+<link
+	href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean"
+	rel="stylesheet">
+<style>
+p {
+	font-family: "Nanum Gothic", sans-serif;
+	font-size: 15px;
+}
+
+p.a {
+	font-weight: 400;
+}
+
+p.b {
+	font-weight: 700;
+}
+
+p.c {
+	font-weight: 800;
+}
+
+p.d {
+	font-weight: bold;
+}
+</style>
 <title>Remembrance Project</title>
 </head>
 
@@ -187,7 +193,7 @@
 						<jsp:include page="QnA/qboardc.jsp"></jsp:include>
 					</c:if>
 				</c:if>
-				
+
 				<c:if test="${param.menu == 4}">
 					<jsp:include page="menu_pages/04_register.jsp"></jsp:include>
 				</c:if>
@@ -195,25 +201,30 @@
 				<c:if test="${param.menu == 5}">
 					<jsp:include page="menu_pages/05_login.jsp"></jsp:include>
 				</c:if>
-				
+
 				<c:if test="${param.menu == 6 }">
 					<jsp:include page="menu_pages/06_basic.jsp"></jsp:include>
 				</c:if>
-				
+
 				<c:if test="${param.menu == 7 }">
 					<jsp:include page="menu_pages/07_medium.jsp"></jsp:include>
 				</c:if>
-				
+
 				<c:if test="${param.menu == 9 }">
 					<jsp:include page="menu_pages/09_wordcard.jsp"></jsp:include>
 				</c:if>
-				
+
 				<c:if test="${param.menu == 10 }">
 					<jsp:include page="menu_pages/10_custom.jsp"></jsp:include>
 				</c:if>
-				
+
 				<c:if test="${param.menu == 11 }">
 					<jsp:include page="menu_pages/11_makeWordCard.jsp"></jsp:include>
+				</c:if>
+
+				<!-- QnA게시판 글쓰기 -->
+				<c:if test="${param.menu == 12 }">
+					<jsp:include page="QnA/qboardw.jsp"></jsp:include>
 				</c:if>
 
 			</div>
@@ -254,9 +265,9 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="modal fade" id="userdeleteModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+	<div class="modal fade" id="userdeleteModal" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -266,12 +277,12 @@
 						<span aria-hidden="true">×</span>
 					</button>
 				</div>
-				<div class="modal-body">사용자 정보를 삭제하면, 단어장 데이터와 같은 모든 개인 데이터가 삭제돼요!
-										이 작업은 돌이킬 수 없으니 주의하세요!
-										정말 사용자 정보를 삭제하시겠어요?</div>
+				<div class="modal-body">사용자 정보를 삭제하면, 단어장 데이터와 같은 모든 개인 데이터가
+					삭제돼요! 이 작업은 돌이킬 수 없으니 주의하세요! 정말 사용자 정보를 삭제하시겠어요?</div>
 				<div class="modal-footer">
 					<a class="btn btn-danger"
-						href="${pageContext.request.contextPath}/user/userDelete.do">사용자 삭제</a>
+						href="${pageContext.request.contextPath}/user/userDelete.do">사용자
+						삭제</a>
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">취소</button>
 				</div>

@@ -5,4 +5,8 @@
 	<select id="selectWordList" parameterType="com.project.dao.Word" resultType="com.project.dao.Word">
 		SELECT Q_NO, Q_ID, Q_FRONT, Q_BACK, Q_HIT FROM ${value} ORDER BY Q_NO ASC
 	</select>
+	
+	<select id="createWordList" parameterType="map">
+		${sql}
+	</select>
 </mapper>

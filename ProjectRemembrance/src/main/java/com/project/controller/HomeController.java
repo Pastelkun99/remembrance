@@ -1,6 +1,5 @@
 package com.project.controller;
 
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
@@ -50,10 +49,14 @@ public class HomeController {
 		} else if (menu == 1) { // word card
 			System.out.println(level);
 			Word temp = new Word();
-			httpSession.setAttribute("card_name", level);
-			temp.setLevel(level);
-			model.addAttribute("list", wDAO.selectWordList(level));
-			System.out.println(wDAO.selectWordList(level).toString());
+			if(level != null) {
+				httpSession.setAttribute("card_name", level);
+				temp.setLevel(level);
+				model.addAttribute("list", wDAO.selectWordList(level));
+				System.out.println(wDAO.selectWordList(level).toString());
+			} else if(level == null) {
+				
+			}
 		} else if (menu == 2) {
 			if(httpSession.getAttribute("login_check") != null) {
 				User thing = us.selectUserAll((String)httpSession.getAttribute("login_check")); 
@@ -80,11 +83,18 @@ public class HomeController {
 				
 				int prev = qDAO.selectBoardPrev(no);
 				int next = qDAO.selectBoardNext(no);
+				System.out.println("이전 : " + prev + "다음 : " + next);
 				model.addAttribute("prev", prev);
 				model.addAttribute("next", next);
 			}
-		} else if(menu == 6) {
-			//model.addAttribute("list", wDAO.selectWordList(level));
+			
+		} else if(menu == 11) {
+			if(httpSession.getAttribute("cardsession") != null) {
+				System.out.println("받아온 세션 값 : " + httpSession.getAttribute("cardsession"));
+				List<Word> qlist = wDAO.selectWordList((String)httpSession.getAttribute("cardsession"));
+				model.addAttribute("list", qlist);
+			}
+			httpSession.removeAttribute("cardsession");
 		}
 		
 		return "main";

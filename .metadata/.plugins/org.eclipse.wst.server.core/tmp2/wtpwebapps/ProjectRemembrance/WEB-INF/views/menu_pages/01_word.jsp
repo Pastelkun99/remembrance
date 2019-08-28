@@ -4,6 +4,7 @@
 <%-- <jsp:include page="./navigation.jsp"></jsp:include> --%>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>
 <div align="center">
+	<h2>${param.level} 단어장입니다.</h2>
 	<div align="center" style="width: 650px; height: auto;">
 		<div class="alert alert-light" role="alert" id="front">Quiz Front</div>
 		<p>
