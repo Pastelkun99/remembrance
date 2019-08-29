@@ -5,3 +5,6 @@
 8월 28, 2019 12:09:52.68 NEW SESSION
 8월 28, 2019 12:09:52.68 [7180:5844:0828/120950.756:ERROR:gcm_channel_status_request.cc(146)] GCM channel request failed.
 8월 28, 2019 17:41:43.23 [7180:1440:0828/174143.235:ERROR:browser_process_sub_thread.cc(203)] Waited 290 ms for network service
+
+8월 29, 2019 16:38:02.11 NEW SESSION
+8월 29, 2019 16:38:02.12 [10592:5248:0829/163801.885:ERROR:browser_process_sub_thread.cc(203)] Waited 84 ms for network service

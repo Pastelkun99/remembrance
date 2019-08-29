@@ -47,7 +47,7 @@ function next() {
 	var len = data.length;
 	if(len === 0){
 		setTimeout(() => {
-			 alert('학습이 종료되었습니다. 메인화면으롣 돌아갑니다.');
+			 alert('학습이 종료되었습니다. 메인화면으로 돌아갑니다.');
 			 location.replace("main.do"); // 카드가 없으면 특정 페이지로 이동
 		}, 1000);
 		return;

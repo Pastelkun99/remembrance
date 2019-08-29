@@ -4,16 +4,16 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="next"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="30162"/>
+			<item value="야"/>
 			<item value="next"/>
 			<item value="selectword"/>
 			<item value="today"/>
 			<item value="단어장"/>
 			<item value="메뉴"/>
 			<item value="user_pw_before"/>
-			<item value="정보수정"/>
-			<item value="abc"/>
 		</list>
 		<list key="replacehistory">
 			<item value="qDAO"/>

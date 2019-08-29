@@ -43,7 +43,7 @@ public class HomeController {
 		
 		if (menu == 0) {
 			List<User> list = us.selectUserList();
-			System.out.println(list.toString());
+			//System.out.println(list.toString());
 			model.addAttribute("userlist", list);
 			
 		} else if (menu == 1) { // word card
@@ -53,14 +53,14 @@ public class HomeController {
 				httpSession.setAttribute("card_name", level);
 				temp.setLevel(level);
 				model.addAttribute("list", wDAO.selectWordList(level));
-				System.out.println(wDAO.selectWordList(level).toString());
+				//System.out.println(wDAO.selectWordList(level).toString());
 			} else if(level == null) {
 				
 			}
 		} else if (menu == 2) {
 			if(httpSession.getAttribute("login_check") != null) {
 				User thing = us.selectUserAll((String)httpSession.getAttribute("login_check")); 
-				System.out.println("thing : " + thing.toString());
+				//System.out.println("thing : " + thing.toString());
 				model.addAttribute("user", thing);
 			} else {
 				
@@ -83,7 +83,7 @@ public class HomeController {
 				
 				int prev = qDAO.selectBoardPrev(no);
 				int next = qDAO.selectBoardNext(no);
-				System.out.println("이전 : " + prev + "다음 : " + next);
+				//System.out.println("이전 : " + prev + "다음 : " + next);
 				model.addAttribute("prev", prev);
 				model.addAttribute("next", next);
 			}
@@ -125,7 +125,7 @@ public class HomeController {
 	public String loginPost(Model model, @ModelAttribute() User user, HttpSession httpSession,
 			HttpServletRequest request) {
 		try {
-			System.out.println("id : " + user.getUser_id() + " pw : " + user.getUser_pw());
+			// System.out.println("id : " + user.getUser_id() + " pw : " + user.getUser_pw());
 			User tempuser = us.selectUserLogin(user);
 			if (user.getUser_pw().equals(tempuser.getUser_pw())) {
 				httpSession.setAttribute("login_check", user.getUser_id());
@@ -154,7 +154,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/register.do", method = RequestMethod.POST)
 	public String register(@ModelAttribute User user, Model model, HttpServletRequest request) {
-		System.out.println(user.toString());
+		// System.out.println(user.toString());
 		us.insertUserOne(user);
 		model.addAttribute("msg", "회원 등록에 성공했습니다. 새로운 아이디로 로그인해주세요.");
 		model.addAttribute("href", request.getContextPath() + "/main.do?menu=5");
@@ -180,6 +180,7 @@ public class HomeController {
 		int result = 0;
 		try {
 			String userpw = us.selectUserPw(pw).getUser_pw();
+			System.out.println("비번값 : " + userpw);
 			if(userpw != "") {
 				result = 1;
 				return result;

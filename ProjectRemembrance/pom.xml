@@ -218,7 +218,7 @@
 				<version>2.2</version>
 				<configuration>
 					<url>http://1.234.5.158:8081/manager/text</url>
-					<path>/Remembrance</path>
+					<path>/remember</path>
 					<username>dg20190814</username>
 					<password>123456</password>
 				</configuration>

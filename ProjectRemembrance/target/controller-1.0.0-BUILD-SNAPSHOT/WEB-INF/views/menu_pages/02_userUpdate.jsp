@@ -78,8 +78,7 @@
 
 						<div class="col-md-6 offset-md-4">
 							<button type="submit" id="updatebtn" class="btn btn-primary" onclick="location:href='${pageContext.request.contextPath}/main.do'">정보수정</button>
-							<button type="button" class="btn btn-primary"
-								onclick="location:href='${pageContext.request.contextPath}/main.do'">취소</button>
+							<a href="${pageContext.request.contextPath }" class="btn btn-primary" role="button">취소</a>
 							<br /> <br />
 							<button type="button" class="btn btn-danger" data-toggle="modal"
 								data-target="#userdeleteModal">사용자 제거</button>
@@ -107,14 +106,16 @@
 				user_pw_before : inputed
 			},
 			// 레스트 컨트롤러 이름 적시
-			url : "/controller/checkPw.do",
+			url : "/remember/checkPw.do",
 			success : function(data) {
 				if (data == 1) {
 					// 가능한경우
 					$('#updatebtn').prop("disabled", false);
+					$('#user_pw').prop("disabled", false);
 					chkop = 1;
 				} else {
 					$('#updatebtn').prop("disabled", true);
+					$('#user_pw').prop("disabled", true);
 					chkop = 0;
 				}
 			}
@@ -130,7 +131,7 @@
 			chknp = 0;
 		} else if (pwInputed == check) {
 			chknp = 1;
-			if(chkop == 1 && chknp == 1) {
+			if(chknp == 1) {
 				$('#updatebtn').prop("disabled", false);
 			}
 		} else if (pwInputed != check) {
