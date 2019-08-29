@@ -5,8 +5,8 @@
 
 <div class="container">
   <div class="alert alert-success" role="alert">단어장 관리</div>
-  <br /> <label for="basic-url">단어장 이름을 반드시 입력해주세요!</label>
-  <form action="${pageContext.request.contextPath }/word/wordcardCreate.do" method="post">
+  <br /> <!-- <label for="basic-url">단어장 이름을 반드시 입력해주세요!</label> -->
+  <%-- <form action="${pageContext.request.contextPath }/word/wordcardCreate.do" method="post">
   <div class="input-group mb-3">
     <div class="form-inline"> <!-- input-group-prepend"> -->
       <span class="input-group-text" id="basic-addon1">단어장 이름</span>
@@ -15,8 +15,8 @@
         <button type="submit" class="btn btn-primary">생성</button>
       </div>
   </div>
-  <h4>QUIZCARD 단어장 입니다.</h4>
-  </form>
+  </form> --%>
+  <h4>당신이 가지고 있는 QUIZCARD 단어장 입니다.</h4>
   <table class="table" id="wtable">
     <thead class="thead-light" align="center">
       <tr>

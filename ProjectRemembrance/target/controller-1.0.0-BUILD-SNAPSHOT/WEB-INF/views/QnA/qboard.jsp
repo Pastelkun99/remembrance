@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -34,7 +33,6 @@
 	
 	<a href="qboardw.do" href="${pageContext.request.contextPath}/main.do?menu=1">게시판 글쓰기</a>
 	
-	<!-- <메뉴: 4번> QnA 게시판 (qboard.jsp 홈 내부) -->
 	<c:if test="${param.menu == 1}">
 		<jsp:include page="qboard.jsp"></jsp:include>
 	</c:if>

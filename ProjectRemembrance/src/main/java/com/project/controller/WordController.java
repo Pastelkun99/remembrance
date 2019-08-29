@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.dao.Word;
 import com.project.dao.WordServiceDAO;
 
 @Controller
@@ -24,6 +26,12 @@ public class WordController {
 	
 	@RequestMapping(value = "/wordstart.do", method = RequestMethod.GET)
 	public String ajaxEx(Model model) {
+		return "";
+	}
+	
+	
+	@RequestMapping(value="/wordcardCreate.do", method = RequestMethod.GET)
+	public String wordcardCreate(@RequestParam("level") String value) {
 		return "";
 	}
 	
@@ -44,7 +52,8 @@ public class WordController {
 			model.addAttribute("href", request.getContextPath() + "/main.do?menu=11");
 			session.setAttribute("cardsession", value);
 		} catch (Exception e) {
-			System.out.println("야 이거 안돼");
+			model.addAttribute("msg", "단어장 불러오기에 실패했습니다.");
+			model.addAttribute("href", request.getContextPath() + "/main.do?menu=9");
 		}
 		return "alert";
 	}

@@ -2,7 +2,8 @@ var table;
 var tableLength;
 var maxNo, cardNo;
 var id, front, back;
-// var param = getParameterByName('level'); // 테이블명
+//var param = getParameterByName('level'); // 테이블명
+console.log("js 에서 찍힌 log " + param);
 var param = "QUIZCARD"; // 테이블명
 $(() => { // 시작시 실행
 	console.log("start");
@@ -32,7 +33,7 @@ function btn_updateOne(id) {
 	console.log(cardNo);
 	updateOne();
 	setTimeout(() => {
-		alert("update ok");
+		alert("수정되었습니다.");
 		selectList();
 	}, 1000); 
 }

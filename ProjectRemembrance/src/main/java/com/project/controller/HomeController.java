@@ -36,7 +36,7 @@ public class HomeController {
 
 	// 메인 화면 처리
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public String main(Model model, HttpSession httpSession,
+	public String main(Model model, HttpSession httpSession, HttpServletRequest request,
 			@RequestParam(value = "menu", required = false, defaultValue = "0") int menu,
 			@RequestParam(value = "no", required = false, defaultValue = "0") int no,
 			@RequestParam(value = "level", required = false, defaultValue = "") String level) {
@@ -95,6 +95,12 @@ public class HomeController {
 				model.addAttribute("list", qlist);
 			}
 			httpSession.removeAttribute("cardsession");
+		} else if(menu == 9) {
+			if(httpSession.getAttribute("login_check") == null) {
+				model.addAttribute("msg", "로그인이 필요한 서비스입니다.");
+				model.addAttribute("href", request.getContextPath() + "/main.do");
+				return "alert";
+			}
 		}
 		
 		return "main";
@@ -196,6 +202,11 @@ public class HomeController {
 		model.addAttribute("href", request.getContextPath() + "/main.do");
 		// 절대경로는 request.getContextPath(); 사용할것
 		return "alert";
+	}
+	
+	@RequestMapping(value = "/credit.do", method = RequestMethod.GET)
+	public String credit() {
+		return "Credit";
 	}
 
 }

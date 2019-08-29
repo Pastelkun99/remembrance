@@ -2,7 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="wordMapper">
-	<select id="selectWordList" resultType="com.project.dao.Word">
-		SELECT * FROM QUIZCARD ORDER BY Q_NO ASC
+	<select id="selectWordList" parameterType="com.project.dao.Word" resultType="com.project.dao.Word">
+		SELECT Q_NO, Q_ID, Q_FRONT, Q_BACK, Q_HIT FROM ${value} ORDER BY Q_NO ASC
+	</select>
+	
+	<select id="createWordList" parameterType="map">
+		${sql}
 	</select>
 </mapper>

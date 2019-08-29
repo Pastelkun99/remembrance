@@ -59,45 +59,13 @@ p.d {
 		<form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 			<div class="input-group">
-				<!-- <input type="text" class="form-control" placeholder="Search for..."
-					aria-label="Search" aria-describedby="basic-addon2">
-				<div class="input-group-append">
-					<button class="btn btn-primary" type="button">
-						<i class="fas fa-search"></i>
-					</button>
-				</div> -->
+				
 			</div>
 		</form>
 
 		<!-- Navbar -->
 		<ul class="navbar-nav ml-auto ml-md-0">
-			<!-- <li class="nav-item dropdown no-arrow mx-1"><a
-				class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
-				role="button" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <span
-					class="badge badge-danger">9+</span>
-			</a>
-				<div class="dropdown-menu dropdown-menu-right"
-					aria-labelledby="alertsDropdown">
-					<a class="dropdown-item" href="#">Action</a> <a
-						class="dropdown-item" href="#">Another action</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">Something else here</a>
-				</div></li> -->
-			<!-- <li class="nav-item dropdown no-arrow mx-1"><a
-				class="nav-link dropdown-toggle" href="#" id="messagesDropdown"
-				role="button" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"> <i class="fas fa-envelope fa-fw"></i> <span
-					class="badge badge-danger">7</span>
-			</a>
-				<div class="dropdown-menu dropdown-menu-right"
-					aria-labelledby="messagesDropdown">
-					<a class="dropdown-item" href="#">Action</a> <a
-						class="dropdown-item" href="#">Another action</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">Something else here</a>
-				</div></li> -->
-
+			
 			<li class="nav-item dropdown no-arrow"><a
 				class="nav-link dropdown-toggle" href="#" id="userDropdown"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -121,7 +89,7 @@ p.d {
 							</strong>
 						</FONT>
 						</a>
-						<a class="dropdown-item" href="#">활동 내역</a>
+						<!-- <a class="dropdown-item" href="#">활동 내역</a> -->
 						<a class="dropdown-item"
 							href="${pageContext.request.contextPath}/main.do?menu=2">나의
 							계정 수정</a>
@@ -160,13 +128,20 @@ p.d {
 					</c:if>
 					<%-- <a class="dropdown-item" href="${pageContext.request.contextPath}/main.do?menu=3">QnA</a> --%>
 				</div></li>
-
-			<li class="nav-item"><a class="nav-link" href="main.do"> <i
+	
+			<c:if test="${sessionScope.login_check ne null}">
+				<li class="nav-item"><a class="nav-link" href="main.do"> <i
 					class="fas fa-fw fa-chart-area"></i> <span>Activity Charts</span></a></li>
 
-			<li class="nav-item"><a class="nav-link"
+				<li class="nav-item"><a class="nav-link"
 				href="${pageContext.request.contextPath}/main.do?menu=3"> <i
-					class="fas fa-fw fa-chart-area"></i> <span>QnA Page</span></a></li>
+					class="fas fa-fw fa-phone"></i> <span>QnA Page</span></a></li>
+			</c:if>
+			
+			<li class="nav-item"><a class="nav-link"
+				href="${pageContext.request.contextPath}/credit.do"> <i
+					class="fas fa-fw fa-glasses"></i> <span>Credit</span></a></li>		
+					
 		</ul>
 
 		<div id="content-wrapper">
@@ -226,7 +201,7 @@ p.d {
 				<c:if test="${param.menu == 12 }">
 					<jsp:include page="QnA/qboardw.jsp"></jsp:include>
 				</c:if>
-
+			
 			</div>
 			<!-- /.container-fluid -->
 
