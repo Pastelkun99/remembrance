@@ -106,7 +106,7 @@
 				user_pw_before : inputed
 			},
 			// 레스트 컨트롤러 이름 적시
-			url : "/remember/checkPw.do",
+			url : "/controller/checkPw.do",
 			success : function(data) {
 				if (data == 1) {
 					// 가능한경우

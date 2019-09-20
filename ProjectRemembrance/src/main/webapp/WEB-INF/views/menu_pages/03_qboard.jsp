@@ -8,6 +8,8 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 
+<div class="col-sm-2"></div>
+
 <div class="card mb-3">
   <div class="card-header">
     <i class="fas fa-table"></i> QnA 게시판 
@@ -48,3 +50,4 @@
     <%= today %>
   </div>
 </div>
+<div class="col-sm-2"></div>

@@ -3,6 +3,7 @@ var tableLength;
 var maxNo, cardNo;
 var id, front, back;
 //var param = getParameterByName('level'); // 테이블명
+// 사설 node 서버에서 정보를 불러오게 됨
 console.log("js 에서 찍힌 log " + param);
 var param = "QUIZCARD"; // 테이블명
 $(() => { // 시작시 실행

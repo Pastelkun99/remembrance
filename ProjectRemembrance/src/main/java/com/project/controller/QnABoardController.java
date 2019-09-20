@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,13 +59,13 @@ public class QnABoardController {
 	}
 
 	@RequestMapping(value = "/qboardw.do", method = RequestMethod.POST)
-	public String boardwrite(HttpServletRequest request, @RequestParam("title") String a,
-			@RequestParam("content") String b, @RequestParam("writer") String c) {
+	public String boardwrite(HttpServletRequest request, @RequestParam("title") String title,
+			@RequestParam("content") String content, @RequestParam("writer") String writer) {
 
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("TI", a);
-		map.put("CO", b);
-		map.put("WR", c);
+		map.put("TI", title);
+		map.put("CO", content);
+		map.put("WR", writer);
 
 		qDAO.insertBoardOne(map);
 		return "redirect:/main.do?menu=3";
@@ -81,6 +82,15 @@ public class QnABoardController {
 	public String boardedit(@RequestParam HashMap<String, Object> map) {
 		qDAO.updateBoardOne(map);
 		return "redirect:/qboardc.do?no=" + map.get("no");
+	}
+	
+	@RequestMapping(value = "/qboardd.do", method = RequestMethod.GET)
+	public String boardDelete(@RequestParam("no") int boardno, Model model, HttpServletRequest request) {
+		System.out.println("입장");
+		qDAO.deleteBoardOne(boardno);
+		model.addAttribute("msg", "게시글이 삭제되었습니다.");
+		model.addAttribute("href", request.getContextPath() + "/main.do?menu=3");
+		return "alert";
 	}
 
 }

@@ -74,6 +74,8 @@
 									<button type="button" class="btn btn-primary btn-sm"
 										onclick="location.href='main.do?menu=3&no=${next}'">다음글</button>
 								</c:if>
+								<button type="button" class="btn btn-danger btn-sm"
+									onclick="location.href='qb/qboardd.do?no=${board.Q_NO}'">글 삭제</button>
 
 							</div>
 						</div>

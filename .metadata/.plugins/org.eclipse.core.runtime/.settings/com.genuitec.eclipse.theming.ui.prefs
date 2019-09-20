@@ -1,13 +1,14 @@
 applyBackground=false
-approved.defs.file.last.changed.time=1563840441000
+approved.defs.file.last.changed.time=1567206552000
 codemix.dont.show.upsell.until=1567052618983
 configurationInstallLocation=/C\:/sts-bundle/sts-3.9.9.RELEASE/
 eclipse.preferences.version=1
+elearning.dont.show.until=1568683871066
 iconcolormode=primary
 iconreplacement=true
 includeThemingInOomph=false
-last.download.attempt.time=1567082414395
-lastConfiguration=1567082371698
+last.download.attempt.time=1568951796300
+lastConfiguration=1568952352419
 newinstall=false
 showWelcomeDialog=false
 workbench.theme=Dark Gray

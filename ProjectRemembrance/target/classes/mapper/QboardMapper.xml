@@ -4,7 +4,7 @@
 
 <mapper namespace="QboardMapper">
 	<insert id="insertBoardOne" parameterType="map">
-		INSERT INTO QNA_TBL VALUES(SEQ_Q_NO.NEXTVAL, #{TI}, #{CO}, #{WR}, 1, SYSDATE)
+		INSERT INTO QNA_TBL VALUES(SEQ_Q_NO.NEXTVAL, #{TI}, #{WR}, #{CO}, 0, SYSDATE)
 	</insert>
 	
 	<select id="selectBoardList" resultType="map">
@@ -20,10 +20,12 @@
 	</select>
 
 	
-	<resultMap id="result1" type="map">
+	<!-- CLOB 데이터 처리 하고 싶으면 이렇게 -->
+	<!-- <resultMap id="result1" type="map">
 		<result property="Q_CONTENT" column="Q_CONTENT" jdbcType="CLOB" javaType="java.lang.String" />
-	</resultMap>
-	<select id="selectBoardOne" parameterType="int" resultMap="result1">
+	</resultMap> -->
+	<!-- CLOB 처리 시 -> <select id="selectBoardOne" parameterType="int" resultMap="result1"> -->
+	<select id="selectBoardOne" parameterType="int" resultType="map"> 
 		SELECT 
 			Q_NO, Q_TITLE, 
 			Q_CONTENT, Q_WRITER,

@@ -8,3 +8,8 @@
 
 8월 29, 2019 16:38:02.11 NEW SESSION
 8월 29, 2019 16:38:02.12 [10592:5248:0829/163801.885:ERROR:browser_process_sub_thread.cc(203)] Waited 84 ms for network service
+
+9월 08, 2019 19:45:27.28 NEW SESSION
+9월 08, 2019 19:45:27.28 [11960:10456:0908/194527.097:ERROR:socket_stream.cc(219)] Closing stream with result -2
+9월 08, 2019 20:11:03.16 [11960:10456:0908/201103.160:ERROR:connection_factory_impl.cc(413)] Failed to connect to MCS endpoint with error -21
+9월 08, 2019 20:39:45.72 [11960:10456:0908/203945.723:ERROR:browser_process_sub_thread.cc(203)] Waited 11 ms for network service

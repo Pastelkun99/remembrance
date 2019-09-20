@@ -103,7 +103,7 @@
 					user_id : inputed
 				},
 				// 레스트 컨트롤러 이름 적시
-				url : "/remember/checkId.do",
+				url : "/controller/checkId.do",
 				success : function(data) {
 					if (inputed == "" && data == '0') {
 						/* 아무튼 회원 등록 불가능 상태 */
